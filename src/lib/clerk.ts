@@ -1,16 +1,7 @@
 import { clerkClient, currentUser } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 
-// Initialize Clerk client with proper typing
-const clerkInstance = process.env.CLERK_SECRET_KEY ? clerkClient({
-  secretKey: process.env.CLERK_SECRET_KEY,
-}) : null;
-
 export async function getUser() {
-  if (!clerkInstance) {
-    console.error('Clerk client not initialized')
-    return null
-  }
   const user = await currentUser()
   if (!user) {
     return null
