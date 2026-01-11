@@ -133,6 +133,12 @@
           "async": false,
           "exportedName": "detectKeylessEnvDriftAction",
           "filename": "node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js"
+        },
+        "app/test-clerk/page": {
+          "moduleId": 26243,
+          "async": false,
+          "exportedName": "detectKeylessEnvDriftAction",
+          "filename": "node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js"
         }
       },
       "layer": {
@@ -157,7 +163,8 @@
         "app/signup/page": "rsc",
         "app/templates/[id]/page": "rsc",
         "app/templates/new/page": "rsc",
-        "app/templates/page": "rsc"
+        "app/templates/page": "rsc",
+        "app/test-clerk/page": "rsc"
       },
       "filename": "node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js",
       "exportedName": "detectKeylessEnvDriftAction"
@@ -295,6 +302,12 @@
           "async": false,
           "exportedName": "invalidateCacheAction",
           "filename": "node_modules/@clerk/nextjs/dist/esm/app-router/server-actions.js"
+        },
+        "app/test-clerk/page": {
+          "moduleId": 26243,
+          "async": false,
+          "exportedName": "invalidateCacheAction",
+          "filename": "node_modules/@clerk/nextjs/dist/esm/app-router/server-actions.js"
         }
       },
       "layer": {
@@ -319,7 +332,8 @@
         "app/signup/page": "action-browser",
         "app/templates/[id]/page": "action-browser",
         "app/templates/new/page": "action-browser",
-        "app/templates/page": "action-browser"
+        "app/templates/page": "action-browser",
+        "app/test-clerk/page": "action-browser"
       },
       "filename": "node_modules/@clerk/nextjs/dist/esm/app-router/server-actions.js",
       "exportedName": "invalidateCacheAction"
@@ -457,6 +471,12 @@
           "async": false,
           "exportedName": "createOrReadKeylessAction",
           "filename": "node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js"
+        },
+        "app/test-clerk/page": {
+          "moduleId": 26243,
+          "async": false,
+          "exportedName": "createOrReadKeylessAction",
+          "filename": "node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js"
         }
       },
       "layer": {
@@ -481,7 +501,8 @@
         "app/signup/page": "rsc",
         "app/templates/[id]/page": "rsc",
         "app/templates/new/page": "rsc",
-        "app/templates/page": "rsc"
+        "app/templates/page": "rsc",
+        "app/test-clerk/page": "rsc"
       },
       "filename": "node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js",
       "exportedName": "createOrReadKeylessAction"
@@ -619,6 +640,12 @@
           "async": false,
           "exportedName": "collectKeylessMetadata",
           "filename": "node_modules/@clerk/nextjs/dist/esm/server/keyless-custom-headers.js"
+        },
+        "app/test-clerk/page": {
+          "moduleId": 26243,
+          "async": false,
+          "exportedName": "collectKeylessMetadata",
+          "filename": "node_modules/@clerk/nextjs/dist/esm/server/keyless-custom-headers.js"
         }
       },
       "layer": {
@@ -643,7 +670,8 @@
         "app/signup/page": "rsc",
         "app/templates/[id]/page": "rsc",
         "app/templates/new/page": "rsc",
-        "app/templates/page": "rsc"
+        "app/templates/page": "rsc",
+        "app/test-clerk/page": "rsc"
       },
       "filename": "node_modules/@clerk/nextjs/dist/esm/server/keyless-custom-headers.js",
       "exportedName": "collectKeylessMetadata"
@@ -781,6 +809,12 @@
           "async": false,
           "exportedName": "formatMetadataHeaders",
           "filename": "node_modules/@clerk/nextjs/dist/esm/server/keyless-custom-headers.js"
+        },
+        "app/test-clerk/page": {
+          "moduleId": 26243,
+          "async": false,
+          "exportedName": "formatMetadataHeaders",
+          "filename": "node_modules/@clerk/nextjs/dist/esm/server/keyless-custom-headers.js"
         }
       },
       "layer": {
@@ -805,7 +839,8 @@
         "app/signup/page": "rsc",
         "app/templates/[id]/page": "rsc",
         "app/templates/new/page": "rsc",
-        "app/templates/page": "rsc"
+        "app/templates/page": "rsc",
+        "app/test-clerk/page": "rsc"
       },
       "filename": "node_modules/@clerk/nextjs/dist/esm/server/keyless-custom-headers.js",
       "exportedName": "formatMetadataHeaders"
@@ -943,6 +978,12 @@
           "async": false,
           "exportedName": "deleteKeylessAction",
           "filename": "node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js"
+        },
+        "app/test-clerk/page": {
+          "moduleId": 26243,
+          "async": false,
+          "exportedName": "deleteKeylessAction",
+          "filename": "node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js"
         }
       },
       "layer": {
@@ -967,7 +1008,8 @@
         "app/signup/page": "action-browser",
         "app/templates/[id]/page": "action-browser",
         "app/templates/new/page": "action-browser",
-        "app/templates/page": "action-browser"
+        "app/templates/page": "action-browser",
+        "app/test-clerk/page": "action-browser"
       },
       "filename": "node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js",
       "exportedName": "deleteKeylessAction"
@@ -1105,6 +1147,12 @@
           "async": false,
           "exportedName": "syncKeylessConfigAction",
           "filename": "node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js"
+        },
+        "app/test-clerk/page": {
+          "moduleId": 26243,
+          "async": false,
+          "exportedName": "syncKeylessConfigAction",
+          "filename": "node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js"
         }
       },
       "layer": {
@@ -1129,7 +1177,8 @@
         "app/signup/page": "action-browser",
         "app/templates/[id]/page": "action-browser",
         "app/templates/new/page": "action-browser",
-        "app/templates/page": "action-browser"
+        "app/templates/page": "action-browser",
+        "app/test-clerk/page": "action-browser"
       },
       "filename": "node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js",
       "exportedName": "syncKeylessConfigAction"

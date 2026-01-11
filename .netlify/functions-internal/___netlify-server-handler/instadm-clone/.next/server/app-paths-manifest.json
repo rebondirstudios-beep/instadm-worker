@@ -44,5 +44,6 @@
   "/signup/page": "app/signup/page.js",
   "/templates/[id]/page": "app/templates/[id]/page.js",
   "/templates/new/page": "app/templates/new/page.js",
-  "/templates/page": "app/templates/page.js"
+  "/templates/page": "app/templates/page.js",
+  "/test-clerk/page": "app/test-clerk/page.js"
 }

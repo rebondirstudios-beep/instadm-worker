@@ -44,5 +44,6 @@
   "/signup/page": "/signup",
   "/templates/[id]/page": "/templates/[id]",
   "/templates/new/page": "/templates/new",
-  "/templates/page": "/templates"
+  "/templates/page": "/templates",
+  "/test-clerk/page": "/test-clerk"
 }

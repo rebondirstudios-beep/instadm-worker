@@ -320,6 +320,12 @@
       "regex": "^/templates/new(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/templates/new(?:/)?$"
+    },
+    {
+      "page": "/test-clerk",
+      "regex": "^/test\\-clerk(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/test\\-clerk(?:/)?$"
     }
   ],
   "dataRoutes": [],
