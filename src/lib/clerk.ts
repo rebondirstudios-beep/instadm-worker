@@ -1,25 +1,17 @@
 import { clerkClient, currentUser } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 
-// Initialize Clerk client with error handling
-let clerk: ReturnType<typeof clerkClient>;
-
-try {
-  if (process.env.CLERK_SECRET_KEY) {
-    clerk = clerkClient({
-      secretKey: process.env.CLERK_SECRET_KEY,
-    });
-  }
-} catch (error) {
-  console.error('Failed to initialize Clerk client:', error);
-}
+// Initialize Clerk client with proper typing
+const clerkInstance = process.env.CLERK_SECRET_KEY ? clerkClient({
+  secretKey: process.env.CLERK_SECRET_KEY,
+}) : null;
 
 export async function getUser() {
-  if (!clerk) {
+  if (!clerkInstance) {
     console.error('Clerk client not initialized')
     return null
   }
-  const user = await currentUser({ clerk })
+  const user = await currentUser()
   if (!user) {
     return null
   }
