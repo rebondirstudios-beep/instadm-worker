@@ -1,0 +1,16 @@
+# Railway deployment configuration
+[build]
+builder = "nixpacks"
+
+[deploy]
+healthcheckPath = "/health"
+healthcheckTimeout = 100
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 10
+
+[[services]]
+name = "instadm-worker"
+
+[services.variables]
+NODE_ENV = "production"
+PORT = "8080"

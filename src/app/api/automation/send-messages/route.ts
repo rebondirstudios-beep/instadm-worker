@@ -7,6 +7,9 @@ import { decryptSecretMaybe } from "@/lib/crypto";
 
 export const runtime = "nodejs";
 
+// Worker URL from environment (optional)
+const WORKER_URL = process.env.WORKER_URL;
+
 function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -94,6 +97,39 @@ export async function POST(request: NextRequest) {
 
     if (campaign.status === "completed") {
       return NextResponse.json({ error: "Campaign is completed" }, { status: 400 });
+    }
+
+    // If worker URL is configured, delegate to worker
+    if (WORKER_URL) {
+      try {
+        const response = await fetch(`${WORKER_URL}/send-messages`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            campaignId,
+            instagramAccountId,
+            senderMode,
+            headless,
+            maxToProcess,
+            skipDelay,
+            delayMinMs,
+            delayMaxMs,
+          }),
+        });
+
+        if (!response.ok) {
+          const error = await response.text();
+          return NextResponse.json({ error: `Worker error: ${error}` }, { status: response.status });
+        }
+
+        const result = await response.json();
+        return NextResponse.json(result);
+      } catch (error) {
+        console.error('Worker delegation failed:', error);
+        return NextResponse.json({ error: `Failed to contact worker: ${error}` }, { status: 500 });
+      }
     }
 
     if (!account.isActive) {

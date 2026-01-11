@@ -1,0 +1,30 @@
+# Fly.io deployment configuration
+app = "instadm-worker"
+
+[build]
+  dockerfile = "worker/Dockerfile"
+
+[env]
+  DATABASE_URL = ""
+  IG_CREDENTIALS_KEY = ""
+
+[http_service]
+  internal_port = 8080
+  protocol = "tcp"
+
+  [[http_service.checks]]
+    interval = "30s"
+    timeout = "10s"
+    grace_period = "5s"
+    method = "get"
+    path = "/health"
+
+[vm]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 512
+
+# Mount for persistent storage (optional, for Playwright profiles)
+[[mounts]]
+  source = "playwright_data"
+  destination = "/app/playwright-data"
