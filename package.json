@@ -1,0 +1,17 @@
+{
+  "name": "instadm-worker",
+  "version": "1.0.0",
+  "description": "Playwright worker for Instagram DM automation",
+  "main": "worker.js",
+  "scripts": {
+    "start": "node worker.js",
+    "dev": "node worker.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.1",
+    "playwright": "^1.57.0"
+  },
+  "devDependencies": {
+    "prisma": "^6.19.1"
+  }
+}
