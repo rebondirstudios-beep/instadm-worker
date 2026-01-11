@@ -20,6 +20,12 @@ export const metadata: Metadata = {
 
 const clerkPublishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || "pk_test_placeholder";
 
+// Debug: Log environment variables (only in development)
+if (typeof window !== 'undefined') {
+  console.log('NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:', clerkPublishableKey ? 'SET' : 'MISSING');
+  console.log('Key length:', clerkPublishableKey?.length || 0);
+}
+
 export const dynamic = "force-dynamic";
 
 export default function RootLayout({
