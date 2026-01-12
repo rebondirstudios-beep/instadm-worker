@@ -13,13 +13,14 @@ function startOfToday() {
 }
 
 export default async function DashboardPage() {
-  const user = await currentUser();
-  
-  if (!user) {
-    redirect("/login");
-  }
+  try {
+    const user = await currentUser();
+    
+    if (!user) {
+      redirect("/login");
+    }
 
-  const dbUser = await ensureDbUser(user);
+    const dbUser = await ensureDbUser(user);
 
   const [
     totalCampaigns,
@@ -329,4 +330,25 @@ export default async function DashboardPage() {
       </main>
     </div>
   );
+  } catch (error) {
+    console.error("Dashboard error:", error);
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <div className="text-center p-8">
+          <h2 className="text-2xl font-bold text-red-600 mb-4">
+            Dashboard Error
+          </h2>
+          <p className="text-gray-600 mb-4">
+            Unable to load dashboard. Please try again later.
+          </p>
+          <Link 
+            href="/"
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          >
+            Go Home
+          </Link>
+        </div>
+      </div>
+    );
+  }
 }
