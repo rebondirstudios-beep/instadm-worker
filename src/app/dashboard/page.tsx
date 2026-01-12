@@ -6,6 +6,8 @@ import { prisma } from "@/lib/prisma";
 import { ensureDbUser } from "@/lib/dbUser";
 import AutomationLiveStatsCard from "@/components/AutomationLiveStatsCard";
 
+export const dynamic = "force-dynamic";
+
 function startOfToday() {
   const d = new Date();
   d.setHours(0, 0, 0, 0);
