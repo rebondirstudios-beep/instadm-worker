@@ -25,10 +25,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  if (!clerkPublishableKey) {
-    throw new Error("Missing NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY");
-  }
-
   const content = (
     <html lang="en" className="bg-white text-gray-900">
       <body
