@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description: "Scale Instagram outreach 100x with automated DM campaigns, lead generation, and multi-account management.",
 };
 
-const clerkPublishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
+const clerkPublishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || "pk_test_Ym9sZC1ib25lZmlzaC0yLmNsZXJrLmFjY291bnRzLmRldiQ";
 
 export default function RootLayout({
   children,
