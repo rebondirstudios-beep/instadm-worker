@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: instadm-dashboard
+    env: node
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+        value: pk_test_Ym9sZC1ib25lZmlzaC0yLmNsZXJrLmFjY291bnRzLmRldiQ
+      - key: CLERK_SECRET_KEY
+        value: sk_test_fm7elplrnCykpbNNgU7qsnkBe7lYID04ayRqkUQf7W
+      - key: DATABASE_URL
+        value: postgresql://neondb_owner:npg_sTv1nJD9Eujl@ep-weathered-wave-ahucbsbe-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
