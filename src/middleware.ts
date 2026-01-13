@@ -10,7 +10,11 @@ const isPublicRoute = createRouteMatcher([
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
-  if (!isPublicRoute(req)) {
+  try {
+    if (isPublicRoute(req)) {
+      return NextResponse.next();
+    }
+
     const { userId } = await auth();
     if (!userId) {
       const pathname = req.nextUrl.pathname;
@@ -22,6 +26,11 @@ export default clerkMiddleware(async (auth, req) => {
       loginUrl.searchParams.set("redirect_url", req.url);
       return NextResponse.redirect(loginUrl);
     }
+
+    return NextResponse.next();
+  } catch (err) {
+    console.error("Clerk middleware error", err);
+    return NextResponse.next();
   }
 });
 
