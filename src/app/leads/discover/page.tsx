@@ -18,6 +18,8 @@ export default function LeadDiscoveryPage() {
 
   const [prompt, setPrompt] = useState("");
   const [maxResults, setMaxResults] = useState(20);
+  const [mode, setMode] = useState<"auto" | "search" | "llm">("auto");
+  const [provider, setProvider] = useState<"auto" | "serpapi" | "google_cse" | "perplexity">("auto");
   const [isSearching, setIsSearching] = useState(false);
   const [usernames, setUsernames] = useState<string[]>([]);
   const [raw, setRaw] = useState("");
@@ -70,7 +72,12 @@ export default function LeadDiscoveryPage() {
       const res = await fetch("/api/perplexity/search", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: q, maxResults }),
+        body: JSON.stringify({
+          prompt: q,
+          maxResults,
+          mode: mode === "auto" ? undefined : mode,
+          provider: provider === "auto" ? undefined : provider,
+        }),
       });
       const data = (await res.json().catch(() => ({}))) as any;
       if (!res.ok) throw new Error(data?.error || `Search failed (HTTP ${res.status})`);
@@ -92,7 +99,14 @@ export default function LeadDiscoveryPage() {
       const res = await fetch("/api/perplexity/search", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ initialUsernames: usernames, verify: true, maxResults }),
+        body: JSON.stringify({
+          prompt: prompt.trim(),
+          initialUsernames: usernames,
+          verify: true,
+          maxResults,
+          mode: mode === "auto" ? undefined : mode,
+          provider: provider === "auto" ? undefined : provider,
+        }),
       });
       const data = (await res.json().catch(() => ({}))) as any;
       if (!res.ok) throw new Error(data?.error || `Verification failed (HTTP ${res.status})`);
@@ -202,6 +216,40 @@ export default function LeadDiscoveryPage() {
             Describe your ideal leads and get a list of Instagram usernames.
           </p>
 
+          <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Accuracy mode</label>
+              <select
+                value={mode}
+                onChange={(e) => setMode(e.target.value as any)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white"
+              >
+                <option value="auto">Auto (recommended)</option>
+                <option value="search">Web search (best accuracy)</option>
+                <option value="llm">LLM only (fastest)</option>
+              </select>
+              <p className="text-xs text-gray-500 mt-2">
+                Web search needs API keys on the server. If not configured, it will fall back automatically.
+              </p>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Search provider</label>
+              <select
+                value={provider}
+                onChange={(e) => setProvider(e.target.value as any)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white"
+              >
+                <option value="auto">Auto</option>
+                <option value="serpapi">SerpAPI</option>
+                <option value="google_cse">Google CSE</option>
+                <option value="perplexity">Perplexity only</option>
+              </select>
+              <p className="text-xs text-gray-500 mt-2">
+                For consistent results, pick a provider.
+              </p>
+            </div>
+          </div>
+
           <div className="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="md:col-span-3">
               <label className="block text-sm font-medium text-gray-700 mb-2">Search prompt</label>
@@ -212,6 +260,12 @@ export default function LeadDiscoveryPage() {
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 placeholder="e.g. Instagram usernames of architects in Bangalore (usernames only)"
               />
+              <p className="text-xs text-gray-500 mt-2">
+                Better prompts include:
+                <br />- niche + location
+                <br />- follower range / language
+                <br />- keywords in bio (e.g. “book a call”, “DM for quote”)
+              </p>
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Max results</label>
